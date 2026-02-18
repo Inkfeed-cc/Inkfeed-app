@@ -1,0 +1,16 @@
+{
+  "batches": [
+    {
+      "id": "a5271a19-6f23-453f-a6df-6a2e3ea7ebfe",
+      "createdAt": "2026-02-16T12:00:07.843Z",
+      "totalCategories": 110,
+      "totalClusters": 888,
+      "totalArticles": 6722,
+      "totalReadCount": 43270,
+      "processingTime": 4864,
+      "languageCode": "en",
+      "isComplete": true,
+      "dateSlug": "2026-02-16.1"
+    }
+  ]
+}

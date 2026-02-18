@@ -1,0 +1,94 @@
+{
+  "47033789": {
+    "by": "jp1016",
+    "id": 47033789,
+    "kids": [47034139, 47033944],
+    "parent": 47033328,
+    "text": "One practical thing I appreciated about MessageFormat is how it eliminates a bunch of conditional UI logic.<p>I used to write switch/if blocks for plural forms.",
+    "time": 1771241447,
+    "type": "comment"
+  },
+  "47034139": {
+    "by": "Vinnl",
+    "id": 47034139,
+    "kids": [47034202],
+    "parent": 47033789,
+    "text": "This post shows a lot of the challenges with localisation.",
+    "time": 1771244552,
+    "type": "comment"
+  },
+  "47034202": {
+    "by": "user123",
+    "id": 47034202,
+    "parent": 47034139,
+    "text": "Agreed, localisation is hard.",
+    "time": 1771245000,
+    "type": "comment"
+  },
+  "47033944": {
+    "by": "anotheruser",
+    "id": 47033944,
+    "parent": 47033789,
+    "text": "ICU is powerful but complex.",
+    "time": 1771242000,
+    "type": "comment"
+  },
+  "47033731": {
+    "by": "1116574",
+    "id": 47033731,
+    "kids": [47034163],
+    "parent": 47033328,
+    "text": "Looks a lot like mozilla's project fluent.",
+    "time": 1771240970,
+    "type": "comment"
+  },
+  "47034163": {
+    "by": "Vinnl",
+    "id": 47034163,
+    "parent": 47033731,
+    "text": "Yes, Fluent informed much of the design of MessageFormat.",
+    "time": 1771244701,
+    "type": "comment"
+  },
+  "47033831": {
+    "by": "strogonoff",
+    "id": 47033831,
+    "kids": [47034604],
+    "parent": 47033328,
+    "text": "Does anyone know the ETA of MessageFormat 2.0?",
+    "time": 1771241784,
+    "type": "comment"
+  },
+  "47034604": {
+    "by": "Vinnl",
+    "id": 47034604,
+    "parent": 47033831,
+    "text": "IIRC, the goal was for Fluent to have a convertor.",
+    "time": 1771247897,
+    "type": "comment"
+  },
+  "47031882": {
+    "by": "commenter1",
+    "id": 47031882,
+    "parent": 47031580,
+    "text": "Just walk, obviously.",
+    "time": 1771224000,
+    "type": "comment"
+  },
+  "47032094": {
+    "by": "commenter2",
+    "id": 47032094,
+    "parent": 47031580,
+    "text": "This is peak HN content.",
+    "time": 1771225000,
+    "type": "comment"
+  },
+  "47034546": {
+    "by": "mluser",
+    "id": 47034546,
+    "parent": 47032876,
+    "text": "Impressive benchmarks on the multimodal tasks.",
+    "time": 1771246000,
+    "type": "comment"
+  }
+}

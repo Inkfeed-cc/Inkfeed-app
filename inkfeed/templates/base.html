@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #f6f6ef;
+            --bg-card: #ffffff;
+            --bg-subtle: #fafafa;
+            --bg-quote: #f9f9f6;
+            --bg-quote-kagi: #f9f9fc;
+            --bg-highlight: #f0f4ff;
+            --bg-code: #2d2d2d;
+            --text: #333333;
+            --text-strong: #000000;
+            --text-heading: #222222;
+            --text-secondary: #666666;
+            --text-muted: #888888;
+            --text-code: #f8f8f2;
+            --accent: #ff6600;
+            --kagi: #6285f0;
+            --border: #dddddd;
+            --border-card: #e0e0e0;
+            --border-light: #eeeeee;
+            --border-subtle: #e5e7eb;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a1a1a;
+                --bg-card: #242424;
+                --bg-subtle: #2a2a2a;
+                --bg-quote: #262622;
+                --bg-quote-kagi: #252530;
+                --bg-highlight: #1c2540;
+                --bg-code: #1e1e1e;
+                --text: #d4d4d4;
+                --text-strong: #e0e0e0;
+                --text-heading: #e8e8e8;
+                --text-secondary: #aaaaaa;
+                --text-muted: #999999;
+                --text-code: #f8f8f2;
+                --accent: #ff8c33;
+                --kagi: #809df5;
+                --border: #3a3a3a;
+                --border-card: #3a3a3a;
+                --border-light: #333333;
+                --border-subtle: #383838;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; max-width: 800px; margin: 0 auto; padding: 20px; background: var(--bg); color: var(--text); }
+        a { color: var(--accent); }
+        {% block css %}{% endblock %}
+    </style>
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>

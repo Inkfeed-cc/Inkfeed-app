@@ -1,0 +1,25 @@
+{#- HackerNews story content template.
+
+Variables:
+    article_content  (str)  – extracted article HTML, or empty string
+    score            (int)  – story score
+    num_comments     (int)  – number of comments
+    url              (str)  – story URL
+    text             (str)  – optional HN text (Ask HN, Show HN, etc.)
+    comments         (list) – normalised comment tree (may be empty)
+
+Filters (registered on Environment):
+    hn_time  – formats a unix timestamp as "YYYY-MM-DD HH:MM UTC"
+-#}
+{%- macro render_comments(comments, depth=0) -%}
+{%- for c in comments -%}
+<div class="comment" style="margin-left:{{ depth * 20 }}px"><div class="comment-meta">{{ (c.by|default("anonymous"))|e }} | {{ c.time|default(0)|hn_time }}</div><div class="comment-text">{{ c.text|default("") }}</div>
+{%- if c._comments|default([]) %}
+{{ render_comments(c._comments, depth + 1) }}
+{%- endif %}</div>
+{% endfor -%}
+{%- endmacro -%}
+{%- if article_content %}<div class="article-content">{{ article_content }}</div>{% endif -%}
+<div class="story-meta"><span>{{ score }} points</span> | <span>{{ num_comments }} comments</span> | <a href="{{ url|e }}">original link</a></div>
+{%- if text %}<div class="story-text">{{ text }}</div>{% endif -%}
+{%- if comments %}<div class="comments"><h3>Comments</h3>{{ render_comments(comments) }}</div>{% endif -%}

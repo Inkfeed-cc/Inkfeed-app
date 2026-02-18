@@ -1,0 +1,100 @@
+{
+  "batchId": "a5271a19-6f23-453f-a6df-6a2e3ea7ebfe",
+  "categoryId": "29d914dc-5faf-4f51-9135-35a50bfbb6e6",
+  "categoryName": "Technology",
+  "timestamp": 1771227408,
+  "totalStories": 3,
+  "stories": [
+    {
+      "id": "c370ef00-bab1-4990-a54a-15d20fb8d353",
+      "cluster_number": 1,
+      "title": "Linux Kernel 7.0 Released with Major Performance Improvements",
+      "short_summary": "The Linux Foundation has announced the release of Linux Kernel 7.0, featuring significant performance improvements across multiple architectures. The new kernel includes enhanced scheduling algorithms and reduced memory overhead for containerized workloads.",
+      "category": "Operating Systems",
+      "emoji": "🐧",
+      "unique_domains": 5,
+      "number_of_titles": 8,
+      "talking_points": [
+        "New CFS scheduler reduces context switch overhead by 15%",
+        "Memory management improvements reduce RSS for container workloads",
+        "Rust driver support expanded to cover USB and network subsystems"
+      ],
+      "quote": "This is the most significant kernel release in years.",
+      "quote_author": "Linus Torvalds",
+      "quote_attribution": "Linux Kernel Mailing List",
+      "perspectives": [
+        {
+          "source": "Enterprise IT",
+          "text": "The container optimizations could reduce cloud costs by 5-10% for large-scale deployments."
+        },
+        {
+          "source": "Open Source Community",
+          "text": "Expanded Rust support signals a long-term commitment to memory safety in the kernel."
+        }
+      ],
+      "primary_image": {
+        "url": "https://example.com/images/linux-kernel.jpg",
+        "caption": "Linux Kernel 7.0 release announcement",
+        "credit": "Linux Foundation"
+      },
+      "articles": [
+        {
+          "title": "Linux Kernel 7.0 Arrives with Container Optimizations",
+          "link": "https://www.phoronix.com/linux-7-0",
+          "domain": "phoronix.com",
+          "date": "2026-02-16T08:00:00Z"
+        },
+        {
+          "title": "What's New in Linux 7.0",
+          "link": "https://lwn.net/Articles/linux-7",
+          "domain": "lwn.net",
+          "date": "2026-02-16T10:30:00Z"
+        },
+        {
+          "title": "Linux Kernel 7.0 Boosts Rust Driver Support",
+          "link": "https://arstechnica.com/linux-7-rust",
+          "domain": "arstechnica.com",
+          "date": "2026-02-16T09:15:00Z"
+        }
+      ],
+      "domains": [
+        {"name": "phoronix.com"},
+        {"name": "lwn.net"},
+        {"name": "arstechnica.com"}
+      ]
+    },
+    {
+      "id": "d481f100-ccc2-5001-b65b-26e31fb9e464",
+      "cluster_number": 2,
+      "title": "Firefox 140 Introduces Tab Grouping and Vertical Tabs",
+      "short_summary": "Mozilla has released Firefox 140, bringing long-requested tab grouping and vertical tab features to the stable channel. The update also includes performance improvements for JavaScript-heavy web applications.",
+      "category": "Browsers",
+      "emoji": "🦊",
+      "unique_domains": 3,
+      "number_of_titles": 4,
+      "talking_points": [
+        "Tab groups can be collapsed and color-coded",
+        "Vertical tabs available as a built-in sidebar option",
+        "SpiderMonkey JIT improvements show 8% faster page loads"
+      ],
+      "articles": [
+        {
+          "title": "Firefox 140 Finally Gets Tab Groups",
+          "link": "https://www.mozilla.org/firefox-140",
+          "domain": "mozilla.org",
+          "date": "2026-02-15T18:00:00Z"
+        },
+        {
+          "title": "Mozilla Adds Vertical Tabs to Firefox",
+          "link": "https://techcrunch.com/firefox-vertical-tabs",
+          "domain": "techcrunch.com",
+          "date": "2026-02-16T06:00:00Z"
+        }
+      ],
+      "domains": [
+        {"name": "mozilla.org"},
+        {"name": "techcrunch.com"}
+      ]
+    }
+  ]
+}

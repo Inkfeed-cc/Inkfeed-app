@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} — {{ date_str }}{% endblock %}
+
+{% block css %}
+        h1 { font-size: 1.4em; margin-bottom: 10px; color: var(--accent); }
+        .date { color: var(--text-muted); margin-bottom: 20px; font-size: 0.9em; }
+        ul { list-style: none; }
+        li { border-bottom: 1px solid var(--border); padding: 12px 0; }
+        a { color: var(--text-strong); text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+{% endblock %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+    <div class="date">{{ date_str }}</div>
+    <ul>
+    {% for e in entries -%}
+    <li><a href="{{ e.rel_link }}">{{ e.display_name }}</a> ({{ e.article_count }} articles)</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

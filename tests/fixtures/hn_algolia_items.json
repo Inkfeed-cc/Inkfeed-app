@@ -1,0 +1,130 @@
+{
+  "47033328": {
+    "author": "todsacerdoti",
+    "id": 47033328,
+    "points": 92,
+    "created_at_i": 1771237582,
+    "title": "MessageFormat: Unicode standard for localizable message strings",
+    "type": "story",
+    "url": "https://github.com/unicode-org/message-format-wg",
+    "text": null,
+    "children": [
+      {
+        "author": "jp1016",
+        "id": 47033789,
+        "type": "comment",
+        "created_at_i": 1771241447,
+        "text": "One practical thing I appreciated about MessageFormat.",
+        "children": [
+          {
+            "author": "Vinnl",
+            "id": 47034139,
+            "type": "comment",
+            "created_at_i": 1771244552,
+            "text": "This post shows a lot of the challenges with localisation.",
+            "children": [
+              {
+                "author": "user123",
+                "id": 47034202,
+                "type": "comment",
+                "created_at_i": 1771245000,
+                "text": "Agreed, localisation is hard.",
+                "children": []
+              }
+            ]
+          },
+          {
+            "author": "anotheruser",
+            "id": 47033944,
+            "type": "comment",
+            "created_at_i": 1771242000,
+            "text": "ICU is powerful but complex.",
+            "children": []
+          }
+        ]
+      },
+      {
+        "author": "1116574",
+        "id": 47033731,
+        "type": "comment",
+        "created_at_i": 1771240970,
+        "text": "Looks a lot like mozilla's project fluent.",
+        "children": [
+          {
+            "author": "Vinnl",
+            "id": 47034163,
+            "type": "comment",
+            "created_at_i": 1771244701,
+            "text": "Yes, Fluent informed much of the design of MessageFormat.",
+            "children": []
+          }
+        ]
+      },
+      {
+        "author": "strogonoff",
+        "id": 47033831,
+        "type": "comment",
+        "created_at_i": 1771241784,
+        "text": "Does anyone know the ETA of MessageFormat 2.0?",
+        "children": [
+          {
+            "author": "Vinnl",
+            "id": 47034604,
+            "type": "comment",
+            "created_at_i": 1771247897,
+            "text": "IIRC, the goal was for Fluent to have a convertor.",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "47031580": {
+    "author": "novemp",
+    "id": 47031580,
+    "points": 836,
+    "created_at_i": 1771223508,
+    "title": "I want to wash my car. The car wash is 50 meters away. Should I walk or drive?",
+    "type": "story",
+    "url": "https://mastodon.world/@knowmadd/116072773118828295",
+    "text": null,
+    "children": [
+      {
+        "author": "commenter1",
+        "id": 47031882,
+        "type": "comment",
+        "created_at_i": 1771224000,
+        "text": "Just walk, obviously.",
+        "children": []
+      },
+      {
+        "author": "commenter2",
+        "id": 47032094,
+        "type": "comment",
+        "created_at_i": 1771225000,
+        "text": "This is peak HN content.",
+        "children": []
+      }
+    ]
+  },
+  "47032876": {
+    "author": "danielhanchen",
+    "id": 47032876,
+    "points": 105,
+    "created_at_i": 1771234341,
+    "title": "Qwen3.5: Towards Native Multimodal Agents",
+    "type": "story",
+    "url": "https://qwen.ai/blog?id=qwen3.5",
+    "text": null,
+    "children": [
+      {
+        "author": "mluser",
+        "id": 47034546,
+        "type": "comment",
+        "created_at_i": 1771246000,
+        "text": "Impressive benchmarks on the multimodal tasks.",
+        "children": []
+      }
+    ]
+  }
+}

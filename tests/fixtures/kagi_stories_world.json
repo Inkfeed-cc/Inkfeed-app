@@ -1,0 +1,52 @@
+{
+  "batchId": "a5271a19-6f23-453f-a6df-6a2e3ea7ebfe",
+  "categoryId": "54a49257-5a35-453c-8206-f5f73727b68a",
+  "categoryName": "World",
+  "timestamp": 1771227079,
+  "totalStories": 1,
+  "stories": [
+    {
+      "id": "e592af10-dead-beef-cafe-aabbccddeeff",
+      "cluster_number": 1,
+      "title": "UN General Assembly Passes Global AI Governance Resolution",
+      "short_summary": "The United Nations General Assembly has adopted a landmark resolution establishing a framework for international AI governance. The resolution calls for transparency requirements and safety standards for frontier AI systems.",
+      "category": "Diplomacy",
+      "emoji": "🌍",
+      "unique_domains": 7,
+      "number_of_titles": 12,
+      "talking_points": [
+        "Resolution passed with 178 votes in favor, 2 against",
+        "Establishes voluntary safety benchmarks for frontier AI",
+        "Creates UN AI Advisory Office with a 50-person staff"
+      ],
+      "perspectives": [
+        {
+          "source": "US Delegation",
+          "text": "The voluntary framework balances innovation with safety."
+        },
+        {
+          "source": "EU Delegation",
+          "text": "This complements our existing AI Act with global coordination."
+        }
+      ],
+      "articles": [
+        {
+          "title": "UN Adopts Landmark AI Governance Resolution",
+          "link": "https://reuters.com/un-ai-resolution",
+          "domain": "reuters.com",
+          "date": "2026-02-16T14:00:00Z"
+        },
+        {
+          "title": "Global AI Rules Take Shape at United Nations",
+          "link": "https://bbc.com/news/un-ai-framework",
+          "domain": "bbc.com",
+          "date": "2026-02-16T15:30:00Z"
+        }
+      ],
+      "domains": [
+        {"name": "reuters.com"},
+        {"name": "bbc.com"}
+      ]
+    }
+  ]
+}

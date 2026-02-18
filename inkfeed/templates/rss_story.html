@@ -1,0 +1,12 @@
+{#- RSS/Atom story content template.
+
+Variables:
+    article_content  (str)  – extracted article HTML via readability, or empty string
+    summary          (str)  – RSS summary/description (fallback content)
+    url              (str)  – article URL
+    feed_name        (str)  – source feed name
+-#}
+{%- if article_content %}<div class="article-content">{{ article_content }}</div>
+{%- elif summary %}<div class="article-content summary-fallback">{{ summary }}</div>
+{%- endif %}
+<div class="story-meta"><a href="{{ url|e }}">original link</a></div>

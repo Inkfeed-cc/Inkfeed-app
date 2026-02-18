@@ -1,0 +1,33 @@
+{% extends "sleepscreen_base.html" %}
+{% block content %}
+<div class="card">
+    <div style="padding-top: 40px;"></div>
+
+    <div class="brand">Inkfeed</div>
+
+    <hr class="divider" style="margin-top: 20px;">
+
+    <div style="margin-top: 8px;">
+        <div style="font-size: 20px;">Synchronized on</div>
+        <div style="font-size: 22px; font-weight: 700; margin-top: 4px;">{{ date_str }}</div>
+    </div>
+
+    <hr class="divider" style="margin-top: 20px;">
+
+    <div style="margin-top: 8px;">
+        <div style="font-size: 16px;">{{ summaries | length }} source group(s) archived</div>
+        <div style="font-size: 16px; margin-top: 4px;">{{ total_articles }} articles total</div>
+    </div>
+
+    <div style="margin-top: 24px;">
+        {% for s in summaries %}
+        <div style="display: flex; justify-content: space-between; font-size: 16px; margin-bottom: 6px; padding-left: 8px;">
+            <span>&bull;&nbsp; {{ s.display_name }}</span>
+            <span>({{ s.article_count }})</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="footer-brand">INKFEED</div>
+</div>
+{% endblock %}

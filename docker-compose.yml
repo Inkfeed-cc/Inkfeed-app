@@ -1,0 +1,8 @@
+services:
+  inkfeed:
+    build: .
+    volumes:
+      # Bind-mount your config (edit to taste before running).
+      - ./config.toml:/app/config.toml:ro
+      # Archives land here on the host.
+      - ./output:/app/output

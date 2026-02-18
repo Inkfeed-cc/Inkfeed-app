@@ -1,0 +1,240 @@
+{#- Kagi News story content template.
+
+Variables:
+    story  (dict)        – raw Kagi story cluster dict
+    cmap   (CitationMap) – pre-built citation map for this story
+    cite   (callable)    – cite(text, cmap) -> HTML-escaped text with citation links
+
+Filters (registered on Environment):
+    format_source_date  – formats ISO date string as " (YYYY-MM-DD)"
+
+Macros that need citation processing receive ``cmap`` and ``cite``
+as explicit arguments because Jinja2 macros cannot access the
+caller's template context.
+-#}
+{#- ── Reusable macros ───────────────────────────────────────── -#}
+{%- macro render_image(img) -%}
+{%- set url = img.url|default("") -%}
+{%- if url -%}
+{%- set caption = (img.caption|default(""))|e -%}
+{%- set credit = (img.credit|default(""))|e -%}
+<figure class="story-image"><img src="{{ url|e }}" alt="{{ caption }}">
+{%- if caption or credit -%}
+{%- if caption and credit -%}
+<figcaption>{{ caption }} — {{ credit }}</figcaption>
+{%- elif credit -%}
+<figcaption>{{ credit }}</figcaption>
+{%- else -%}
+<figcaption>{{ caption }}</figcaption>
+{%- endif -%}
+{%- endif -%}
+</figure>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro render_sources(articles) -%}
+{%- if articles -%}
+<div class="source-articles"><h3>Sources</h3><ol>
+{%- for art in articles %}
+<li id="src-{{ loop.index }}"><a href="{{ art.link|default("")|e }}">{{ art.title|default("")|e }}</a> <span class="source-domain">[{{ art.domain|default("")|e }}]</span>{{ art.date|default("")|format_source_date }}</li>
+{%- endfor %}
+</ol></div>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro render_text_section(title, content, cmap, cite) -%}
+{%- set paragraphs = content.split("\n\n")|map('trim')|select|list -%}
+<div class="kagi-section"><h3>{{ title|e }}</h3>
+{%- if paragraphs -%}
+{%- for p in paragraphs %}<p>{{ cite(p, cmap) }}</p>{% endfor -%}
+{%- else -%}
+<p>{{ cite(content, cmap) }}</p>
+{%- endif -%}
+</div>
+{%- endmacro -%}
+
+{%- macro render_list_section(title, items, cmap, cite) -%}
+<div class="kagi-section"><h3>{{ title|e }}</h3><ul>
+{%- for item in items %}<li>{{ cite(item, cmap) }}</li>{% endfor -%}
+</ul></div>
+{%- endmacro -%}
+
+{%- macro render_timeline(events, cmap, cite) -%}
+<div class="timeline"><h3>Timeline</h3>
+{%- for event in events -%}
+{%- if event is string -%}
+{%- if "::" in event -%}
+{%- set date_part = event.split("::", 1)[0]|trim -%}
+{%- set content = event.split("::", 1)[1]|trim -%}
+{%- else -%}
+{%- set date_part = "" -%}
+{%- set content = event -%}
+{%- endif -%}
+{%- else -%}
+{%- set date_part = event.date|default("") -%}
+{%- set content = event.content|default("") -%}
+{%- endif %}
+<div class="timeline-item"><div class="timeline-marker"><div class="timeline-dot">{{ loop.index }}</div></div><div class="timeline-content">
+{%- if date_part %}<div class="timeline-date">{{ date_part|e }}</div>{% endif -%}
+<div class="timeline-description">{{ cite(content, cmap) }}</div></div></div>
+{%- endfor %}
+</div>
+{%- endmacro -%}
+
+{#- ── Main content ──────────────────────────────────────────── -#}
+<div class="article-content">
+{#- 1. Summary -#}
+{%- set summary = story.short_summary|default("") -%}
+{%- if summary -%}
+{%- set emoji = (story.emoji|default(""))|e -%}
+{%- set prefix = emoji ~ " " if emoji else "" -%}
+{%- set paragraphs = summary.split("\n\n")|map('trim')|select|list %}
+<div class="story-summary">
+{%- if paragraphs -%}
+{%- for p in paragraphs %}<p>{{ prefix if loop.first else "" }}{{ cite(p, cmap) }}</p>{% endfor -%}
+{%- else -%}
+<p>{{ prefix }}{{ cite(summary, cmap) }}</p>
+{%- endif -%}
+{%- if story.location|default("") %}<div class="story-location">{{ story.location|e }}</div>{% endif -%}
+</div>
+{%- endif %}
+{#- 2. Primary image -#}
+{%- if story.primary_image %}
+{{ render_image(story.primary_image) }}
+{%- endif %}
+{#- 3. Sources -#}
+{{ render_sources(story.articles|default([])) }}
+{#- 4. Highlights (talking points) -#}
+{%- set talking_points = story.talking_points|default([]) -%}
+{%- if talking_points %}
+<div class="talking-points"><h3>Highlights</h3><ol>
+{%- for tp in talking_points %}<li>{{ cite(tp, cmap) }}</li>{% endfor -%}
+</ol></div>
+{%- endif %}
+{#- 5. Quote -#}
+{%- if story.quote %}
+<blockquote class="story-quote"><p>{{ cite(story.quote, cmap) }}</p>
+{%- set quote_author = (story.quote_author|default(""))|e -%}
+{%- set quote_attribution = (story.quote_attribution|default(""))|e -%}
+{%- set cite_parts = [quote_author, quote_attribution]|select|list -%}
+{%- if cite_parts %}
+<cite>— {{ cite_parts|join(" — ") }}</cite>
+{%- endif -%}
+{%- if story.quote_source_url %}
+<div class="quote-source"><a href="{{ story.quote_source_url|e }}">{{ (story.quote_source_domain|default("")|e) or (story.quote_source_url|e) }}</a></div>
+{%- endif %}
+</blockquote>
+{%- endif %}
+{#- 6. Secondary image -#}
+{%- if story.secondary_image %}
+{{ render_image(story.secondary_image) }}
+{%- endif %}
+{#- 7. Perspectives -#}
+{%- set perspectives = story.perspectives|default([]) -%}
+{%- if perspectives %}
+<div class="perspectives"><h3>Perspectives</h3>
+{%- for p in perspectives -%}
+{%- set p_source = (p.source|default(""))|e -%}
+{%- set p_text = cite(p.text|default(""), cmap) -%}
+{%- if p_text %}
+<div class="perspective-card"><p>{% if p_source %}<strong>{{ p_source }}:</strong> {% endif %}{{ p_text }}</p></div>
+{%- endif -%}
+{%- endfor %}
+</div>
+{%- endif %}
+{#- 8. Historical Background -#}
+{%- if story.historical_background %}
+{{ render_text_section("Historical Background", story.historical_background, cmap, cite) }}
+{%- endif %}
+{#- 9. Humanitarian Impact -#}
+{%- if story.humanitarian_impact %}
+{{ render_text_section("Humanitarian Impact", story.humanitarian_impact, cmap, cite) }}
+{%- endif %}
+{#- 10. Technical Details -#}
+{%- if story.technical_details %}
+{{ render_list_section("Technical Details", story.technical_details, cmap, cite) }}
+{%- endif %}
+{#- 11. Business Angle -#}
+{%- set biz_text = story.business_angle_text|default("") -%}
+{%- set biz_points = story.business_angle_points|default([]) -%}
+{%- if biz_text or biz_points %}
+<div class="kagi-section"><h3>Business Angle</h3>
+{%- if biz_text %}
+<p>{{ cite(biz_text, cmap) }}</p>
+{%- endif -%}
+{%- if biz_points %}
+<ul>{% for bp in biz_points %}<li>{{ cite(bp, cmap) }}</li>{% endfor %}</ul>
+{%- endif %}
+</div>
+{%- endif %}
+{#- 12. Scientific Significance -#}
+{%- if story.scientific_significance %}
+{{ render_list_section("Scientific Significance", story.scientific_significance, cmap, cite) }}
+{%- endif %}
+{#- 13. Travel Advisory -#}
+{%- if story.travel_advisory %}
+{{ render_list_section("Travel Advisory", story.travel_advisory, cmap, cite) }}
+{%- endif %}
+{#- 14. Performance Statistics -#}
+{%- if story.performance_statistics %}
+{{ render_list_section("Performance Statistics", story.performance_statistics, cmap, cite) }}
+{%- endif %}
+{#- 15. League Standings -#}
+{%- if story.league_standings %}
+{{ render_text_section("League Standings", story.league_standings, cmap, cite) }}
+{%- endif %}
+{#- 16. Design Principles -#}
+{%- if story.design_principles %}
+{{ render_text_section("Design Principles", story.design_principles, cmap, cite) }}
+{%- endif %}
+{#- 17. User Experience Impact -#}
+{%- if story.user_experience_impact %}
+{{ render_list_section("User Experience Impact", story.user_experience_impact, cmap, cite) }}
+{%- endif %}
+{#- 18. Gameplay Mechanics -#}
+{%- if story.gameplay_mechanics %}
+{{ render_list_section("Gameplay Mechanics", story.gameplay_mechanics, cmap, cite) }}
+{%- endif %}
+{#- 19. Industry Impact -#}
+{%- if story.industry_impact %}
+{{ render_list_section("Industry Impact", story.industry_impact, cmap, cite) }}
+{%- endif %}
+{#- 20. Technical Specifications -#}
+{%- if story.technical_specifications %}
+{{ render_text_section("Technical Specifications", story.technical_specifications, cmap, cite) }}
+{%- endif %}
+{#- 21. Timeline -#}
+{%- set timeline = story.timeline|default([]) -%}
+{%- if timeline %}
+{{ render_timeline(timeline, cmap, cite) }}
+{%- endif %}
+{#- 22. International Reactions -#}
+{%- set reactions = story.international_reactions|default([]) -%}
+{%- if reactions %}
+<div class="international-reactions"><h3>International Reactions</h3>
+{%- for r in reactions %}
+<div class="reaction-item"><p>{{ cite(r, cmap) }}</p></div>
+{%- endfor %}
+</div>
+{%- endif %}
+{#- 23. Quick Questions (Suggested Q&A) -#}
+{%- set qna = story.suggested_qna|default([]) -%}
+{%- if qna %}
+<div class="suggested-qna"><h3>Quick Questions</h3>
+{%- for qa in qna %}
+<details><summary>{{ qa.question|default("")|e }}</summary><p>{{ cite(qa.answer|default(""), cmap) }}</p></details>
+{%- endfor %}
+</div>
+{%- endif %}
+{#- 24. Action Items -#}
+{%- set action_items = story.user_action_items|default([]) -%}
+{%- if action_items %}
+<div class="action-items"><h3>Action Items</h3><ul>
+{%- for ai in action_items %}<li>{{ cite(ai, cmap) }}</li>{% endfor -%}
+</ul></div>
+{%- endif %}
+{#- 25. Did You Know? -#}
+{%- if story.did_you_know %}
+<div class="did-you-know"><strong>Did you know?</strong> {{ cite(story.did_you_know, cmap) }}</div>
+{%- endif %}
+</div>

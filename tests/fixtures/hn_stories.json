@@ -1,0 +1,35 @@
+{
+  "47033328": {
+    "by": "todsacerdoti",
+    "descendants": 37,
+    "id": 47033328,
+    "kids": [47033789, 47033731, 47033831],
+    "score": 92,
+    "time": 1771237582,
+    "title": "MessageFormat: Unicode standard for localizable message strings",
+    "type": "story",
+    "url": "https://github.com/unicode-org/message-format-wg"
+  },
+  "47031580": {
+    "by": "novemp",
+    "descendants": 520,
+    "id": 47031580,
+    "kids": [47031882, 47032094],
+    "score": 836,
+    "time": 1771223508,
+    "title": "I want to wash my car. The car wash is 50 meters away. Should I walk or drive?",
+    "type": "story",
+    "url": "https://mastodon.world/@knowmadd/116072773118828295"
+  },
+  "47032876": {
+    "by": "danielhanchen",
+    "descendants": 40,
+    "id": 47032876,
+    "kids": [47034546],
+    "score": 105,
+    "time": 1771234341,
+    "title": "Qwen3.5: Towards Native Multimodal Agents",
+    "type": "story",
+    "url": "https://qwen.ai/blog?id=qwen3.5"
+  }
+}

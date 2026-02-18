@@ -1,0 +1,23 @@
+{% extends "sleepscreen_base.html" %}
+{% block content %}
+<div class="card">
+    <div style="font-size: 22px; font-weight: 700; text-transform: uppercase;">{{ source_name }}</div>
+    <div style="font-size: 14px; margin-top: 4px;">{{ date_str }}</div>
+
+    <hr class="divider">
+
+    <div style="flex: 1; overflow: hidden;">
+        {% for article in articles[:max_headlines] %}
+        <div style="display: flex; align-items: baseline; margin-bottom: 10px;">
+            <span style="font-size: 16px; font-weight: 700; min-width: 28px;">{{ loop.index }}</span>
+            <span style="font-size: 17px; line-height: 1.35;">{{ article.title }}</span>
+        </div>
+        {% endfor %}
+        {% if articles | length > max_headlines %}
+        <div style="font-size: 14px; margin-top: 4px;">... +{{ articles | length - max_headlines }} more</div>
+        {% endif %}
+    </div>
+
+    <div class="footer-brand">INKFEED</div>
+</div>
+{% endblock %}

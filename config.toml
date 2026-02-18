@@ -1,0 +1,60 @@
+[general]
+output_dir = "output"
+embed_assets = true
+output_formats = ["html", "md", "gemtext", "epub", "sleepscreen"]
+max_workers = 8
+max_retries = 3
+
+[sleepscreen]
+width = 480
+height = 800
+spotlight_count = 2
+max_headlines_per_card = 10
+max_excerpt_chars = 350
+
+[sources.hackernews]
+type = "api"
+display_name = "Hacker News"
+frequency = "daily"
+enabled = true
+top_stories = 30
+include_comments = true
+max_comment_depth = 3
+max_comments_per_level = 10
+include_article_content = true
+
+[sources.kaginews]
+type = "api"
+display_name = "Kagi News"
+frequency = "daily"
+enabled = true
+language = "en"
+max_stories_per_category = 50
+categories = [
+    "south_korea",
+    "usa",
+    "world",
+    "business",
+    "tech",
+    "science",
+    "sports",
+    "gaming",
+]
+
+[sources.hackaday]
+type = "rss"
+display_name = "Hackaday"
+frequency = "daily"
+enabled = true
+url = "http://www.hackaday.com/rss.xml"
+max_articles = 30
+include_article_content = true
+
+[sources.engadget]
+type = "rss"
+display_name = "Engadget"
+frequency = "daily"
+enabled = true
+url = "https://www.engadget.com/rss.xml"
+max_articles = 30
+include_article_content = true

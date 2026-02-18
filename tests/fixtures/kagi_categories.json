@@ -1,0 +1,88 @@
+{
+  "batchId": "a5271a19-6f23-453f-a6df-6a2e3ea7ebfe",
+  "createdAt": "2026-02-16T12:00:07.843Z",
+  "hasOnThisDay": false,
+  "categories": [
+    {
+      "id": "c4c7bf38-06f2-4b6c-a056-f4d703391c64",
+      "categoryId": "south_korea",
+      "categoryName": "South Korea",
+      "sourceLanguage": "ko",
+      "timestamp": 1771228868,
+      "readCount": 1253,
+      "clusterCount": 12
+    },
+    {
+      "id": "5248e615-fed4-4f84-9fa3-3b940a698a12",
+      "categoryId": "usa",
+      "categoryName": "USA",
+      "sourceLanguage": "en",
+      "timestamp": 1771226903,
+      "readCount": 248,
+      "clusterCount": 11
+    },
+    {
+      "id": "54a49257-5a35-453c-8206-f5f73727b68a",
+      "categoryId": "world",
+      "categoryName": "World",
+      "sourceLanguage": "en",
+      "timestamp": 1771227079,
+      "readCount": 428,
+      "clusterCount": 12
+    },
+    {
+      "id": "29d914dc-5faf-4f51-9135-35a50bfbb6e6",
+      "categoryId": "tech",
+      "categoryName": "Technology",
+      "sourceLanguage": "en",
+      "timestamp": 1771227408,
+      "readCount": 587,
+      "clusterCount": 12
+    },
+    {
+      "id": "d3e3eeb7-00b0-4812-ba0a-85080dc96bb0",
+      "categoryId": "science",
+      "categoryName": "Science",
+      "sourceLanguage": "en",
+      "timestamp": 1771226915,
+      "readCount": 274,
+      "clusterCount": 10
+    },
+    {
+      "id": "55d7d6b9-b337-469e-b51a-df033513559d",
+      "categoryId": "business",
+      "categoryName": "Business",
+      "sourceLanguage": "en",
+      "timestamp": 1771227553,
+      "readCount": 453,
+      "clusterCount": 12
+    },
+    {
+      "id": "d1fe9774-fc0c-4237-a340-4743fb052f0b",
+      "categoryId": "sports",
+      "categoryName": "Sports",
+      "sourceLanguage": "en",
+      "timestamp": 1771227222,
+      "readCount": 641,
+      "clusterCount": 12
+    },
+    {
+      "id": "9c3c483d-5480-41fe-b559-967028beb15d",
+      "categoryId": "gaming",
+      "categoryName": "Gaming",
+      "sourceLanguage": "en",
+      "timestamp": 1771226895,
+      "readCount": 268,
+      "clusterCount": 9
+    },
+    {
+      "id": "6a8771e4-47b7-475b-917b-7a948cde0fae",
+      "categoryId": "ai",
+      "categoryName": "AI",
+      "sourceLanguage": "en",
+      "timestamp": 1771227167,
+      "readCount": 788,
+      "clusterCount": 12
+    }
+  ]
+}

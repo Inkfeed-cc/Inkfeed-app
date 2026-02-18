@@ -1,0 +1,32 @@
+[project]
+name = "inkfeed"
+version = "0.1.0"
+description = "Curated, self-contained information archiver"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "jinja2>=3.1",
+    "rich>=13.0",
+    "readability-lxml>=0.8.1",
+    "markdownify>=0.14",
+    "ebooklib>=0.18",
+    "Pillow>=10.0",
+    "feedparser>=6.0",
+]
+
+[project.scripts]
+inkfeed = "inkfeed.main:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+sleepscreen = [
+    "playwright>=1.40",
+]
+
+[tool.setuptools.package-data]
+inkfeed = ["templates/*.html", "assets/fonts/*.ttf", "assets/fonts/LICENSE.txt"]
+
+[tool.setuptools.packages.find]
+include = ["inkfeed*"]

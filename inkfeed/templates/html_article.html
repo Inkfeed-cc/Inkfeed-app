@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block css %}
+        h1 { font-size: 1.3em; margin-bottom: 6px; }
+        .meta { font-size: 0.85em; color: var(--text-secondary); margin-bottom: 16px; }
+        .story-meta { margin-bottom: 16px; font-size: 0.9em; color: var(--text-secondary); }
+        .story-meta a { color: var(--accent); }
+        .story-text { margin-bottom: 16px; line-height: 1.6; }
+        .comments h3 { margin: 20px 0 10px; font-size: 1.1em; }
+        .comment { padding: 8px 0; border-top: 1px solid var(--border-light); }
+        .comment-meta { font-size: 0.8em; color: var(--text-muted); margin-bottom: 4px; }
+        .comment-text { font-size: 0.9em; line-height: 1.5; }
+        .comment-text a { color: var(--accent); }
+        .comment-text p { margin: 6px 0; }
+        .back { margin-bottom: 16px; }
+        .back a { color: var(--accent); text-decoration: none; font-size: 0.9em; }
+        .article-content { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 4px; padding: 20px; margin-bottom: 20px; line-height: 1.7; }
+        .article-content h1, .article-content h2, .article-content h3 { margin: 18px 0 8px; color: var(--text-heading); }
+        .article-content h1 { font-size: 1.3em; }
+        .article-content h2 { font-size: 1.15em; }
+        .article-content h3 { font-size: 1.05em; }
+        .article-content p { margin: 10px 0; }
+        .article-content img { max-width: 100%; height: auto; margin: 12px 0; border-radius: 3px; }
+        .article-content blockquote { border-left: 3px solid var(--accent); margin: 12px 0; padding: 8px 16px; color: var(--text-secondary); background: var(--bg-quote); }
+        .article-content pre { background: var(--bg-code); color: var(--text-code); padding: 14px; border-radius: 4px; overflow-x: auto; margin: 12px 0; font-size: 0.88em; }
+        .article-content code { font-family: 'SF Mono', Menlo, monospace; font-size: 0.9em; }
+        .article-content table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+        .article-content th, .article-content td { border: 1px solid var(--border); padding: 8px; text-align: left; font-size: 0.9em; }
+        .article-content th { background: var(--bg); font-weight: bold; }
+        .article-content ul, .article-content ol { margin: 10px 0; padding-left: 24px; }
+        .article-content li { margin: 4px 0; }
+        .article-content a { color: var(--accent); }
+
+        /* ── Kagi News section styles ── */
+        .article-content > div,
+        .article-content > figure,
+        .article-content > blockquote { margin-bottom: 24px; }
+
+        /* Summary */
+        .article-content .story-summary { font-size: 1.05em; line-height: 1.7; }
+        .article-content .story-location { font-size: 0.85em; color: var(--text-muted); margin-top: 6px; }
+
+        /* Images */
+        .article-content .story-image { margin: 16px 0; }
+        .article-content .story-image img { max-width: 100%; height: auto; border-radius: 6px; }
+        .article-content .story-image figcaption { font-size: 0.8em; color: var(--text-muted); margin-top: 6px; }
+
+        /* Sources */
+        .article-content .source-articles ol { padding-left: 24px; }
+        .article-content .source-articles li { padding: 4px 0; }
+        .article-content .source-articles a { color: var(--accent); text-decoration: none; }
+        .article-content .source-articles a:hover { text-decoration: underline; }
+        .article-content .source-domain { font-size: 0.8em; color: var(--text-muted); }
+
+        /* Inline citation superscripts */
+        .article-content sup.cite { font-size: 0.7em; line-height: 0; vertical-align: super; margin: 0 1px; }
+        .article-content sup.cite a { color: var(--kagi); text-decoration: none; font-weight: 600; }
+        .article-content sup.cite a:hover { text-decoration: underline; }
+
+        /* Highlights (talking points) – numbered circle markers */
+        .article-content .talking-points ol { list-style: none; padding-left: 0; counter-reset: highlight; }
+        .article-content .talking-points li { position: relative; padding-left: 36px; margin-bottom: 10px; counter-increment: highlight; }
+        .article-content .talking-points li::before {
+            content: counter(highlight);
+            position: absolute; left: 0; top: 2px;
+            width: 24px; height: 24px; border-radius: 50%;
+            background: var(--kagi); color: #fff;
+            font-size: 0.8em; font-weight: 600;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Quote */
+        .article-content .story-quote {
+            border-left: 3px solid var(--kagi); padding: 12px 20px;
+            background: var(--bg-quote-kagi); font-style: italic; border-radius: 0 6px 6px 0;
+        }
+        .article-content .story-quote p { margin: 0; }
+        .article-content .story-quote cite {
+            display: block; font-style: normal; font-size: 0.85em;
+            color: var(--text-secondary); margin-top: 8px;
+        }
+        .article-content .quote-source { font-size: 0.8em; margin-top: 4px; }
+        .article-content .quote-source a { color: var(--kagi); }
+
+        /* Perspectives */
+        .article-content .perspectives h3 { color: var(--kagi); }
+        .article-content .perspective-card {
+            border: 1px solid var(--border-subtle); border-radius: 8px;
+            padding: 14px; margin-bottom: 10px; background: var(--bg-subtle);
+        }
+        .article-content .perspective-card p { margin: 0; }
+
+        /* Generic text/list sections */
+        .article-content .kagi-section h3 { color: var(--kagi); font-size: 1.05em; margin-bottom: 8px; }
+
+        /* Timeline – adapted from kite-public index.css */
+        .article-content .timeline h3 { color: var(--kagi); margin-bottom: 12px; }
+        .article-content .timeline-item { display: flex; padding-bottom: 24px; }
+        .article-content .timeline-item:last-child { padding-bottom: 0; }
+        .article-content .timeline-marker {
+            position: relative; flex-shrink: 0; width: 32px;
+            margin-right: 16px; align-self: stretch;
+        }
+        .article-content .timeline-dot {
+            width: 24px; height: 24px; background: var(--kagi); border-radius: 50%;
+            position: absolute; top: 4px; left: 4px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: 600; color: #fff; z-index: 1;
+        }
+        .article-content .timeline-marker::after {
+            content: ""; position: absolute; width: 2px;
+            height: calc(100% + 24px); background: var(--kagi);
+            left: 15px; top: 28px;
+        }
+        .article-content .timeline-item:last-child .timeline-marker::after { display: none; }
+        .article-content .timeline-content { flex: 1; padding-top: 2px; min-height: 32px; }
+        .article-content .timeline-date { font-weight: 600; margin-bottom: 4px; color: var(--kagi); }
+        .article-content .timeline-description { color: var(--text-secondary); line-height: 1.5; }
+
+        /* International Reactions */
+        .article-content .international-reactions h3 { color: var(--kagi); }
+        .article-content .reaction-item { padding: 6px 0; border-bottom: 1px solid var(--border-light); }
+        .article-content .reaction-item:last-child { border-bottom: none; }
+        .article-content .reaction-item p { margin: 0; }
+
+        /* Suggested Q&A */
+        .article-content .suggested-qna h3 { color: var(--kagi); margin-bottom: 10px; }
+        .article-content .suggested-qna details {
+            border: 1px solid var(--border-subtle); border-radius: 6px;
+            margin-bottom: 8px; background: var(--bg-subtle);
+        }
+        .article-content .suggested-qna summary {
+            cursor: pointer; font-weight: 600; padding: 10px 14px;
+            list-style: none; font-size: 0.95em;
+        }
+        .article-content .suggested-qna summary::-webkit-details-marker { display: none; }
+        .article-content .suggested-qna summary::before { content: "Q: "; color: var(--kagi); }
+        .article-content .suggested-qna details p { padding: 0 14px 12px; margin: 0; color: var(--text-secondary); }
+
+        /* Action Items */
+        .article-content .action-items h3 { color: var(--kagi); }
+        .article-content .action-items ul { list-style: none; padding-left: 0; }
+        .article-content .action-items li { position: relative; padding-left: 28px; margin-bottom: 6px; }
+        .article-content .action-items li::before {
+            content: "\2713"; position: absolute; left: 0; top: 0;
+            color: var(--kagi); font-weight: bold; font-size: 1.1em;
+        }
+
+        /* Did You Know */
+        .article-content .did-you-know {
+            background: var(--bg-highlight); border-radius: 8px; padding: 14px 18px;
+            font-size: 0.95em; line-height: 1.6;
+        }
+        .article-content .did-you-know strong { color: var(--kagi); }
+{% endblock %}
+
+{% block body %}
+    <div class="back"><a href="index.html">&larr; back</a></div>
+    <h1>{{ article.title }}</h1>
+    <div class="meta">{{ article.author }} | {{ article.publish_date_str }} | <a href="{{ article.source_url }}">source</a></div>
+    {{ article.content_html }}
+{% endblock %}
